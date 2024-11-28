@@ -1,6 +1,7 @@
 'use client';
 import { ICity } from '@/interfaces/city.interface';
 import weatherService from '@/services/weather.service';
+import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -35,20 +36,24 @@ export default function Home() {
                             </svg>
                         </div>
                         <div className="flex flex-row items-center justify-center mt-6">
-                            <div className="font-medium text-6xl">{cityData.main.temp}</div>
+                            <div className="font-medium text-6xl">{Math.floor(cityData.main.temp)}</div>
                             <div className="flex flex-col items-center ml-6">
                                 <div>Cloudy</div>
                                 <div className="mt-1">
                                     <span className="text-sm">
                                         <i className="far fa-long-arrow-up"></i>
                                     </span>
-                                    <span className="text-sm font-light text-gray-500">{cityData.main.temp_max}°C</span>
+                                    <span className="text-sm font-light text-gray-500">
+                                        {Math.floor(cityData.main.temp_max)}°C
+                                    </span>
                                 </div>
                                 <div>
                                     <span className="text-sm">
                                         <i className="far fa-long-arrow-down"></i>
                                     </span>
-                                    <span className="text-sm font-light text-gray-500">{cityData.main.temp_min}°C</span>
+                                    <span className="text-sm font-light text-gray-500">
+                                        {Math.floor(cityData.main.temp_min)}°C
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +72,13 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="flex flex-row items-center justify-center mt-6">
-                            <p>{`Create a report of the weather conditions from ${cityData.name} using the latitude: ${cityData.coord.lat} and longitude: ${cityData.coord.lon}, and indicate the exact temperature of the sunset at ${cityData.sys.sunset}`}</p>
+                            <p>{`Create a report of the weather conditions from ${cityData.name} using the latitude: ${
+                                cityData.coord.lat
+                            } and longitude: ${
+                                cityData.coord.lon
+                            }, and indicate the exact temperature of the sunset at ${dayjs(
+                                cityData.sys.sunset * 1000
+                            ).format('MM/DD/YYYY HH:mm:ss')}`}</p>
                         </div>
                     </>
                 ) : (
