@@ -13,7 +13,7 @@ export default function Home() {
     }, []);
     return (
         <div className="min-h-screen flex items-center justify-center">
-            <div className="flex flex-col bg-white rounded p-4 w-full max-w-screen-md">
+            <div className="flex flex-col bg-white rounded p-4 w-full max-w-xs">
                 {cityData.name ? (
                     <>
                         <div className="font-bold text-xl">{cityData.name}</div>
@@ -65,6 +65,9 @@ export default function Home() {
                                 <div className="font-medium text-sm">Visibility</div>
                                 <div className="text-sm text-gray-500">{cityData.visibility / 1000} km</div>
                             </div>
+                        </div>
+                        <div className="flex flex-row items-center justify-center mt-6">
+                            <p>{`Create a report of the weather conditions from ${cityData.name} using the latitude: ${cityData.coord.lat} and longitude: ${cityData.coord.lon}, and indicate the exact temperature of the sunset at ${cityData.sys.sunset}`}</p>
                         </div>
                     </>
                 ) : (
