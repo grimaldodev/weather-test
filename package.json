@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "className-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.462.0",
     "next": "14.2.18",
