@@ -10,7 +10,7 @@ export default function Home() {
         weatherService.getWeather().then(data => {
             setCityData(data);
         });
-    });
+    }, []);
     return (
         <div className="min-h-screen flex items-center justify-center">
             <div className="flex flex-col bg-white rounded p-4 w-full max-w-screen-md">
